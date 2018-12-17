@@ -28,12 +28,12 @@ namespace TCP_IP
             _Listener = new TcpListener(_IP, _Port);
             _Listener.Start();
 
-            //Quan rep una peticio de connexio, l'accepta creant unsocket de tipus TCPClient
-            //preparat per a poder rebre i enviar dades. Aquest nou TCPClient es crea amb el 
-            //metode AcceptTCPClient
+            //Cuando recibe una peticion de conexion la acepta creando un socket de tipo
+            //TCPClient preparado para poder recibir y enviar datos. Este nuevo TCPClient
+            //se crea con el metodo AcceptTCPClient            
             _Client = _Listener.AcceptTcpClient();
 
-            //Es crea el NetworkStream associat al socket client i es dimensiona el buffer
+            //Se crea el NetworkStream asociado al socket client y se dimensiona el buffer
             _NS = _Client.GetStream();
             byte[] buffer = new byte[_Client.ReceiveBufferSize];
 
@@ -65,6 +65,7 @@ namespace TCP_IP
             _Client.Close();
             _Listener.Stop();
             Console.ReadLine();
+
         }
         #endregion
     }
